@@ -3,7 +3,7 @@ name:  Say Hello
 on:
   push:
     branches:
-      -  main
+      - main
 
 jobs:
   say-hello:
