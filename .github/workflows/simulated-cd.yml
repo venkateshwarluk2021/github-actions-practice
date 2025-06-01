@@ -2,6 +2,8 @@ name: Simuated CD with Auto Commit
 
 on:
   push:
+    brnaches:
+      - main
     paths:
       - hello.py
       - .github/workflows/simulated-cd.yml
