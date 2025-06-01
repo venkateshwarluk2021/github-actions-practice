@@ -1,0 +1,39 @@
+name: Simuated CD with Auto Commit
+
+on:
+  push:
+    paths:
+      - hello.py
+      - .github/workflows/simulated-cd.yml
+
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+
+      - name: Set up Git user
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Run Python Script
+        run: python3 hello.py
+
+      - name: Move file to deployed/
+        if: success()
+        run: |
+          mkdir -p deployed
+          mv hello.py deployed/
+          echo "Moved file to deployed/"
+      - name: Commit and Push Changes
+        if: success()
+        run: |
+          git add deployed/hello.py
+          git commit -m "CI/CD: Auto-movedhello.py to deployed folder"
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
