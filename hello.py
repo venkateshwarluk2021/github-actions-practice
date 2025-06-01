@@ -1,2 +1,2 @@
 print('Hello from simulated CD')
-print('testing the trigger again')
+print('testing the trigger again'')
