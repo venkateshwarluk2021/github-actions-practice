@@ -54,9 +54,38 @@ This repository is for learning and testing GitHub Actions with simple CI/CD wor
 - `pytest` automatically discovers and runs files named like `test_*.py`
 - CI pipeline now validates functional changes through automated testing
 
-**📌 Next Steps Planned:**
-- Implement matrix strategy to test across Python versions
-- Add a simulated CD step (e.g., log file output after test success)
-- Try EC2 self-hosted runner setup later this week
-- Continue exploring DevOps tools and GitHub Actions patterns
+## 🧪 Python CI + Simulated CD Workflow
+
+This project uses GitHub Actions to automatically test and simulate deployment on every push to the `main` branch.
+
+### 📂 Workflow File
+The workflow is defined in:
+
+
+### 🚀 Trigger
+
+The workflow runs on:
+- Pushes to the `main` branch
+- Changes to any `*.py` file, `requirements.txt`, or the workflow file itself
+
+### 🔍 What It Does
+
+#### ✅ Test Job
+- Runs on Ubuntu
+- Executes tests against Python versions: **3.8**, **3.10**, and **3.12**
+- Installs dependencies from `requirements.txt`
+- Runs tests using `pytest`
+
+#### 🚀 Deploy Job (Simulated)
+- Runs only after all tests pass
+- Echoes a deployment message into `deployment.log`
+- Uploads the log as a GitHub Actions artifact
+
+### 📦 Artifacts
+After successful simulated deployment, a file named `deployment.log` is uploaded and can be downloaded from the workflow run page.
+
+---
+
+
+
 
