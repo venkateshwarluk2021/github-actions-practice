@@ -47,7 +47,7 @@ jobs:
           cat deployment.log
 
       - name: Upload artifact
-        uses: action/upload-artifact@v4
+        uses: actions/upload-artifact@v4
         with:
           name: deployment-log
           path: deployment.log
