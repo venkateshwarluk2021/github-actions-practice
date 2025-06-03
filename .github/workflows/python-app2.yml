@@ -1,12 +1,12 @@
 name:  Python CI + Simulated CD
 
-on: 
+on:
   push:
     branches: ["main"]
     paths:
       - **.py
       - requirements.txt
-      
+
   jobs:
     test:
       runs-on: ubuntu-latest
@@ -32,21 +32,21 @@ on:
           run: |
             pytest
 
-  deploy:
-    needs: test
-      runs-on: ubuntu-latest
+    deploy:
+      needs: test
+        runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v4
 
-      - name: Simulate deployment
-        run: |
-          echo "Deployed by ${{ github.actor }} after all tests passed ">deployment.log
-          cat deployment.log
+        - name: Simulate deployment
+          run: |
+            echo "Deployed by ${{ github.actor }} after all tests passed ">deployment.log
+            cat deployment.log
 
-      - name: Upload artifact
-        uses: action/upload-artifact@v4
-        with:
-          name: deployment-log
-          path: deployment.log
+        - name: Upload artifact
+          uses: action/upload-artifact@v4
+          with:
+            name: deployment-log
+            path: deployment.log
