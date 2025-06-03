@@ -85,6 +85,25 @@ The workflow runs on:
 After successful simulated deployment, a file named `deployment.log` is uploaded and can be downloaded from the workflow run page.
 
 ---
+### 🐍 Python App with Dockerized CI/CD 🚀
+
+This repository contains a Python project that uses **Docker** and **GitHub Actions** for CI/CD automation.
+
+---
+
+## 📦 Project Overview
+
+- Written in **Python**
+- Packaged using a **Docker container**
+- **Tests** are automatically run via **GitHub Actions**
+- Includes a **simulated deployment** step
+- Deployment logs are saved as **workflow artifacts**
+
+---
+
+
+
+
 
 
 
