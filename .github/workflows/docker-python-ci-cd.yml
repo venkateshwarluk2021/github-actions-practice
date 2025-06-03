@@ -1,0 +1,45 @@
+name: Python CI + Simulated CD[docker]
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "**.py"
+      - "requirements.txt"
+      - "Dockerfile"
+      - ".github/workflows/docker-python-ci-cd.yml"
+      
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Build Docker Image
+        run: |
+          docker build -t python-app-test
+        
+      - name: Rin tests in Container
+        run: |
+          docker run --rm python-app-test pytest
+          
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Simulate Deployment
+        run: |
+          echo "Deployed by ${{ github.actor }} after all tests arre passed ">deployment.log
+          
+      - name: Upload deployment log artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: deployment-log
+          path: deployment.log
