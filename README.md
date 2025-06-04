@@ -38,7 +38,7 @@ This repository is for learning and testing GitHub Actions with simple CI/CD wor
 - Secrets used: `${{ secrets.GITHUB_TOKEN }}`
 - GitHub bot used for committing moved files
 
-- ### ✅ GitHub Actions CI Workflow - Update Log
+### 4.  ✅ GitHub Actions CI Workflow - Update Log
 
 **📅 Date:** June 2, 2025  
 **🔧 Changes Implemented:**
@@ -54,7 +54,7 @@ This repository is for learning and testing GitHub Actions with simple CI/CD wor
 - `pytest` automatically discovers and runs files named like `test_*.py`
 - CI pipeline now validates functional changes through automated testing
 
-## 🧪 Python CI + Simulated CD Workflow
+### 5.  🧪 Python CI + Simulated CD Workflow
 
 This project uses GitHub Actions to automatically test and simulate deployment on every push to the `main` branch.
 
@@ -85,7 +85,7 @@ The workflow runs on:
 After successful simulated deployment, a file named `deployment.log` is uploaded and can be downloaded from the workflow run page.
 
 ---
-### 🐍 Python App with Dockerized CI/CD 🚀
+### 6. 🐍 Python App with Dockerized CI/CD 🚀
 
 This repository contains a Python project that uses **Docker** and **GitHub Actions** for CI/CD automation.
 
@@ -100,7 +100,7 @@ This repository contains a Python project that uses **Docker** and **GitHub Acti
 - Deployment logs are saved as **workflow artifacts**
 
 ---
-### ✅ Python CI/CD Workflow - Lint, Test, Build, Deploy (GitHub Actions)
+### 7. ✅ Python CI/CD Workflow - Lint, Test, Build, Deploy (GitHub Actions)
 
 This project uses a complete CI/CD pipeline implemented with **GitHub Actions**, including:
 
