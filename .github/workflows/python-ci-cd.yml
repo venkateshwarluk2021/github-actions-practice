@@ -50,7 +50,7 @@ jobs:
         run: |
           mkdir build
           cp main.py build/
-          ip -r build/main_app.zip build/
+          zip -r build/main_app.zip build/
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
