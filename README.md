@@ -100,6 +100,45 @@ This repository contains a Python project that uses **Docker** and **GitHub Acti
 - Deployment logs are saved as **workflow artifacts**
 
 ---
+### ✅ Python CI/CD Workflow - Lint, Test, Build, Deploy (GitHub Actions)
+
+This project uses a complete CI/CD pipeline implemented with **GitHub Actions**, including:
+
+- **Linting** using `flake8`
+- **Unit Testing** using `pytest`
+- **Build stage** to package the app
+- **Simulated Deployment**
+- **Manual trigger** using `workflow_dispatch`
+
+### 🔧 Workflow Stages
+
+| Stage   | Description |
+|---------|-------------|
+| 🧹 Lint  | Checks code quality and style using `flake8` |
+| 🧪 Test | Runs unit tests using `pytest` |
+| 🔨 Build | Creates a `zip` artifact from `main.py` |
+| 🚀 Deploy | Simulates deployment and uploads a `deploy.log` |
+
+### 📂 Files Involved
+
+- `main.py` – Python script with core logic (addition, subtraction)
+- `test_main.py` – Unit tests using `pytest`
+- `.github/workflows/python-ci.yml` – The GitHub Actions workflow file
+
+### ▶️ How to Run the Workflow
+
+Since `workflow_dispatch` is used:
+- Go to the **Actions** tab in GitHub
+- Select the workflow
+- Click **"Run workflow"** manually
+
+### 📦 Artifacts
+
+- `python-app-build` – Zipped app folder
+- `deploy-log` – Log file from simulated deployment
+
+---
+
 
 
 
