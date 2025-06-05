@@ -1,4 +1,4 @@
 # Dockerfile
 FROM python:3.12-slim
-COPY app.py
+COPY app.py .
 CMD ["python","app.py"]
