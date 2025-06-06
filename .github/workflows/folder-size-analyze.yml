@@ -1,0 +1,21 @@
+name: Folder Size Analyzer
+
+on:
+  workflow_dispatch:
+    
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Analyze folder sizes
+        run: |
+          echo "Analyzing folder sizes....." > size_report.log
+          du -sh */ >> size_report.log
+          cat size_report.log
+      - name: Upload size report
+        uses: actions/upload-artifact@v4
+        with:
+          name: folder-size-report
+          path: size-report.log
