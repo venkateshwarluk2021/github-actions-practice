@@ -10,8 +10,8 @@ def get_folder_size(folder_path):
   return total_size
 
 def format_size(bytes_size):
-  mb = bytes_size / ( 1024 * 1024 )
-  return f"{mb:.2f} MB"
+  mb = bytes_size / ( 1024 )
+  return f"{mb:.4f} KB"
 
 
 def analyze_directory(root_folder):
