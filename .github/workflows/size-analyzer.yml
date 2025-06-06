@@ -1,4 +1,4 @@
-name: Folder Size Analyzer
+name: Folder Size python Analyzer
 
 on:
   workflow_dispatch:
