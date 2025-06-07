@@ -9,7 +9,7 @@ jobs:
       - name: Print github variable
         run: |
           echo "Deployment environment: ${{ vars.DEPLOY_ENV }}">var_log.txt
-          cat var+log.txt
+          cat var_log.txt
       - name: Upload variable log
         uses: actions/upload-artifact@v4
         with:
