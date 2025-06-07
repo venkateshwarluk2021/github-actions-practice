@@ -1,0 +1,10 @@
+name: Use Github Variable
+
+on: workflow_dispatch
+
+jobs:
+  demo-vars:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sow variable
+        run: "we are deploying to ${{ vars.DEPLOY_ENV }}"

@@ -1,0 +1,17 @@
+name: Github Variable demo
+
+on: workflow_dispatch
+
+jobs:
+  use-variable:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print github variable
+        run: |
+          echo "Deployment environment: ${{ vars.DEPLOY_ENV }}">var_log.txt
+          cat var+log.txt
+      - name: Upload variable log
+        uses: actions/upload-artifact@v4
+        with:
+          name: deployment-env-log
+          path: var_log.txt
