@@ -7,17 +7,16 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       ENV_NAME: ${{ steps.setenv.outputs.env }}
-      
+
     steps:
       - name: Set environment name
         id: setenv
-        run: echo "env={{ vars.ENVIRONMENT }}" >> "$GITHUB_OUTPUT"
-        
+        run: echo "env=${{ vars.ENVIRONMENT }}" >> "$GITHUB_OUTPUT"
       - name: Show variables and secrets
         run: |
           echo "Region is ${{ vars.REGION }}"
           echo Secret API_KEY length: ${#${{ secrets.API_KEY }}}"
-          
+
   build:
     needs: setup
     runs-on: ubuntu-latest
