@@ -22,7 +22,8 @@ jobs:
     needs: setup
     runs-on: ubuntu-latest
     strategy:
-      python-version: ["3.8", "3.10", "3.12"]
+      matrix:
+        python-version: ["3.8", "3.10", "3.12"]
     steps:
       - name: Use python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
