@@ -1,0 +1,45 @@
+name: Combined variables + secrets +Matrix
+on:
+  workflow_dispatch:
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      ENV_NAME: ${{ steps.setenv.outputs.env }}
+      
+    steps:
+      - name: Set environment name
+        id: setenv
+        run: echo "env={{ vars.ENVIRONMENT }}" >> "$GITHUB_OUTPUT"
+        
+      - name: Show variables and secrets
+        run: |
+          echo "Region is ${{ vars.REGION }}"
+          echo Secret API_KEY length: ${#${{ secrets.API_KEY }}}"
+          
+  build:
+    needds: setup
+    runs-on: ubuntu-latest
+    strategy:
+      python-version: ["3.8", "3.10", "3.12"]
+    steps:
+      - name: Use python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Echo env passed from setup
+        run: echo "ENVIRONMENT=${{ needs.setup.outputs.ENV_NAME }}"
+        
+      - name: Simulate build
+        run: echo "Building with python ${{ matrix.python-version }} in ${{ needs.setup.outputs.ENV_NAME }}
+        
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if ${{ always() }}
+    steps:
+      - name: Deploy step using Secret
+        run: |
+          echo "Deploying to ${{ vars.REGION }} with API_KEY: ****"
+          echo "Secret API_KEY length: ${#${{ secrets.API_KEY }}}"
