@@ -13,9 +13,12 @@ jobs:
         id: setenv
         run: echo "env=${{ vars.ENVIRONMENT }}" >> "$GITHUB_OUTPUT"
       - name: Show variables and secrets
+        shell: bash
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
         run: |
           echo "Region is ${{ vars.REGION }}"
-          echo "Secret API_KEY length: ${#${{ secrets.API_KEY }}}"
+          echo "Secret API_KEY length: ${#API_KEY}"
 
   build:
     needs: setup
@@ -40,6 +43,9 @@ jobs:
     if: ${{ always() }}
     steps:
       - name: Deploy step using Secret
+        shell: bash
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
         run: |
           echo "Deploying to ${{ vars.REGION }} with API_KEY: ****"
-          echo "Secret API_KEY length: ${#${{ secrets.API_KEY }}}"
+          echo "Secret API_KEY length: ${#API_KEY}"
