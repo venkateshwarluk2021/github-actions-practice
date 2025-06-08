@@ -19,7 +19,7 @@ jobs:
           echo Secret API_KEY length: ${#${{ secrets.API_KEY }}}"
           
   build:
-    needds: setup
+    needs: setup
     runs-on: ubuntu-latest
     strategy:
       python-version: ["3.8", "3.10", "3.12"]
