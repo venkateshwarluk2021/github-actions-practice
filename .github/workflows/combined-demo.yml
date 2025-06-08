@@ -35,7 +35,7 @@ jobs:
         run: echo "ENVIRONMENT=${{ needs.setup.outputs.ENV_NAME }}"
 
       - name: Simulate build
-        run: echo "Building with python ${{ matrix.python-version }} in ${{ needs.setup.outputs.ENV_NAME }}
+        run: echo "Building with python ${{ matrix.python-version }} in ${{ needs.setup.outputs.ENV_NAME }}"
 
   deploy:
     needs: build
