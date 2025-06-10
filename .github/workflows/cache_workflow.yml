@@ -7,27 +7,27 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-  steps:
-  - name: Checkout code
-    uses: actions/checkout@v4
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-  - name: Set up Python
-    uses: actions/setup-python@v4
-    with:
-      python-version: '3.11'
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
 
-  - name: Cache pip dependencies
-    uses: actions/cache@v4
-    with:
-      path: ~/.cache/pip
-      key: ${{ runner.os }}-pip-${{ hashfiles('**/requirements.txt') }}
-      restore-keys: |
-        ${{ runner.os }}-pip-
+      - name: Cache pip dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashfiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
 
-  - name: Install dependencies
-    run: |
-      pip install -r requirements.txt
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
 
-  - name: Run Python Script
-    run: |
-      python main.py
+      - name: Run Python Script
+        run: |
+          python main.py
