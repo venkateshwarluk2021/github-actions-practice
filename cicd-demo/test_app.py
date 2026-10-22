@@ -6,9 +6,10 @@ def test_home():
     assert res.status_code == 200
     assert "message" in res.get_json()
     
+    
 def test_health():
     client = app.test_client()
     res = client.get("/health")
-    assert health.status_code == 200
+    assert res.status_code == 200
     assert res.get_json()["status"] == "ok"
     
